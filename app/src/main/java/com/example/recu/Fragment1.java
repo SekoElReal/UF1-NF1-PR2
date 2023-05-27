@@ -21,6 +21,32 @@ public class Fragment1 extends Fragment {
     private EditText emailEditText;
     private EditText dniEditText;
     private Button nextButton;
+    private String correo;
+    private String dni;
+
+    public Fragment1(String correo, String dni) {
+        this.correo = correo;
+        this.dni = dni;
+    }
+
+
+
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
     public Fragment1() {
         // Required empty public constructor
@@ -36,6 +62,9 @@ public class Fragment1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
         emailEditText = view.findViewById(R.id.ET_Email);
         dniEditText = view.findViewById(R.id.ET_DNI);
+
+        correo = emailEditText.getText().toString();
+        dni = dniEditText.getText().toString();
 
         return view;
     }

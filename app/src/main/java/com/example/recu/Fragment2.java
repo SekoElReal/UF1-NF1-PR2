@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,29 +22,21 @@ public class Fragment2 extends Fragment {
     private TextView emailTextView;
     private TextView dniTextView;
 
-    private String email;
-    private String dni;
-
     public Fragment2() {
         // Required empty public constructor
     }
 
-    public static Fragment2 newInstance(String email, String dni) {
-        Fragment2 fragment2 = new Fragment2();
+    public static Fragment2 newInstance(String correo, String dni) {
+        Fragment2 fragment = new Fragment2();
         Bundle args = new Bundle();
-        args.putString("email", email);
+        args.putString("correo", correo);
         args.putString("dni", dni);
-        fragment2.setArguments(args);
-        return fragment2;
-    }
+        fragment.setArguments(args);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            email = getArguments().getString("email");
-            dni = getArguments().getString("dni");
-        }
+        Log.d("Fragment2", "Correo: " + correo + ", DNI: " + dni);
+
+
+        return fragment;
     }
 
     @Override
@@ -53,14 +46,21 @@ public class Fragment2 extends Fragment {
         emailTextView = view.findViewById(R.id.TV_PrintEmail);
         dniTextView = view.findViewById(R.id.TV_PrintDNI);
 
-        if (email != null) {
-            emailTextView.setText(email);
-        }
+        // Obtén los valores del correo y el DNI del argumento del fragmento
+        Bundle args = getArguments();
+        if (args != null) {
+            String correo = args.getString("correo");
+            String dni = args.getString("dni");
 
-        if (dni != null) {
+            // Asigna los valores a los TextView
+            emailTextView.setText(correo);
             dniTextView.setText(dni);
         }
 
         return view;
     }
+
 }
+
+
+
