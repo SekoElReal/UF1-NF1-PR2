@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_width="168dp"
+        android:layout_height="29dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="20dp"
+        android:text="Nombre:"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/ET_Nombre"
+        android:layout_width="206dp"
+        android:layout_height="wrap_content"
+        android:hint="Escribe tu nombre"
+        android:layout_marginLeft="20dp"
+        />
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_width="168dp"
+        android:layout_height="29dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="20dp"
+        android:text="Apellidos:"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/ET_Apellido"
+        android:layout_width="206dp"
+        android:layout_height="wrap_content"
+        android:hint="Escribe tus apellidos"
+        android:layout_marginLeft="20dp"
+        />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_container"
+        />
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/BT_Save"
+        android:layout_width="199dp"
+        android:hint="Save"
+        android:textSize="18dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
