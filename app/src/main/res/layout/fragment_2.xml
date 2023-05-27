@@ -12,13 +12,13 @@
         android:layout_width="209dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Tu Nombre:"
+        android:text="Tu Email:"
         android:textSize="20dp"
         android:textColor="@color/black"/>
 
     <TextView
         android:layout_marginTop="20dp"
-        android:id="@+id/TV_PrintNombre"
+        android:id="@+id/TV_PrintEmail"
         android:layout_marginLeft="20dp"
         android:layout_width="207dp"
         android:layout_height="wrap_content"
@@ -30,22 +30,17 @@
         android:layout_width="209dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Tus Apellidos:"
+        android:text="Tu DNI:"
         android:textSize="20dp"
         android:textColor="@color/black"/>
 
     <TextView
         android:layout_marginTop="20dp"
-        android:id="@+id/TV_PrintApellidos"
+        android:id="@+id/TV_PrintDNI"
         android:layout_marginLeft="20dp"
         android:layout_width="207dp"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textColor="@color/black"
-        />
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_container"
         />
 </LinearLayout>

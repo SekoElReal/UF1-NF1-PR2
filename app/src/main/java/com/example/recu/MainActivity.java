@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 Intent intent2 = new Intent(MainActivity.this, MainActivity2.class);
-                intent2.putExtra("texto2", textoIngresado2);
+                intent.putExtra("texto2", textoIngresado2);
                 intent.putExtra("texto", textoIngresado);
                 startActivity(intent);
-                startActivity(intent2);
             }
         });
     }
