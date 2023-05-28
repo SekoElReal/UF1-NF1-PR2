@@ -24,5 +24,13 @@ public class MyViewModel extends ViewModel {
     public void setDni(String dni) {
         dniLiveData.setValue(dni);
     }
+
+    public String getEmail() {
+        return emailLiveData.getValue();
+    }
+
+    public String getDni() {
+        return dniLiveData.getValue();
+    }
 }
 

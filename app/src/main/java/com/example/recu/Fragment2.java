@@ -2,6 +2,8 @@ package com.example.recu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,22 +23,14 @@ public class Fragment2 extends Fragment {
 
     private TextView emailTextView;
     private TextView dniTextView;
+    private MyViewModel viewModel;
 
     public Fragment2() {
         // Required empty public constructor
     }
 
-    public static Fragment2 newInstance(String correo, String dni) {
-        Fragment2 fragment = new Fragment2();
-        Bundle args = new Bundle();
-        args.putString("correo", correo);
-        args.putString("dni", dni);
-        fragment.setArguments(args);
-
-        Log.d("Fragment2", "Correo: " + correo + ", DNI: " + dni);
-
-
-        return fragment;
+    public static Fragment2 newInstance() {
+        return new Fragment2();
     }
 
     @Override
@@ -46,16 +40,28 @@ public class Fragment2 extends Fragment {
         emailTextView = view.findViewById(R.id.TV_PrintEmail);
         dniTextView = view.findViewById(R.id.TV_PrintDNI);
 
-        // Obtén los valores del correo y el DNI del argumento del fragmento
-        Bundle args = getArguments();
-        if (args != null) {
-            String correo = args.getString("correo");
-            String dni = args.getString("dni");
+        viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
 
-            // Asigna los valores a los TextView
-            emailTextView.setText(correo);
-            dniTextView.setText(dni);
-        }
+        viewModel.getEmailLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String correo) {
+                emailTextView.setText(correo);
+            }
+        });
+
+        viewModel.getDniLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String dni) {
+                dniTextView.setText(dni);
+            }
+        });
+
+        // Obtener los valores del ViewModel
+        String correo = viewModel.getEmail();
+        String dni = viewModel.getDni();
+        emailTextView.setText(correo);
+        dniTextView.setText(dni);
+
 
         return view;
     }
