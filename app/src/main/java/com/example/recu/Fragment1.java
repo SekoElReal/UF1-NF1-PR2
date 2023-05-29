@@ -26,9 +26,9 @@ public class Fragment1 extends Fragment {
     }
 
     public static Fragment1 newInstance(MyViewModel viewModel) {
-        Fragment1 fragment = new Fragment1();
-        fragment.setViewModel(viewModel);
-        return fragment;
+        Fragment1 fragment11= new Fragment1();
+        fragment11.setViewModel(viewModel);
+        return fragment11;
     }
 
     public void setViewModel(MyViewModel viewModel) {
@@ -56,4 +56,3 @@ public class Fragment1 extends Fragment {
     }
 
 }
-

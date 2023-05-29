@@ -1,5 +1,7 @@
 package com.example.recu;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -19,10 +21,12 @@ public class MyViewModel extends ViewModel {
 
     public void setEmail(String email) {
         emailLiveData.setValue(email);
+        Log.d("MyViewModel", "Email set: " + email);
     }
 
     public void setDni(String dni) {
         dniLiveData.setValue(dni);
+        Log.d("MyViewModel", "DNI set: " + dni);
     }
 
     public String getEmail() {
@@ -33,4 +37,3 @@ public class MyViewModel extends ViewModel {
         return dniLiveData.getValue();
     }
 }
-

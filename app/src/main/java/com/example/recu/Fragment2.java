@@ -29,8 +29,14 @@ public class Fragment2 extends Fragment {
         // Required empty public constructor
     }
 
-    public static Fragment2 newInstance() {
-        return new Fragment2();
+    public static Fragment2 newInstance(MyViewModel viewModel) {
+        Fragment2 fragment = new Fragment2();
+        fragment.setViewModel(viewModel);
+        return fragment;
+    }
+
+    public void setViewModel(MyViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -40,12 +46,11 @@ public class Fragment2 extends Fragment {
         emailTextView = view.findViewById(R.id.TV_PrintEmail);
         dniTextView = view.findViewById(R.id.TV_PrintDNI);
 
-        viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
-
         viewModel.getEmailLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String correo) {
                 emailTextView.setText(correo);
+                Log.d("Fragment2", "Email changed: " + correo);
             }
         });
 
@@ -53,18 +58,14 @@ public class Fragment2 extends Fragment {
             @Override
             public void onChanged(String dni) {
                 dniTextView.setText(dni);
+                Log.d("Fragment2", "DNI changed: " + dni);
             }
         });
-
-        // Obtener los valores del ViewModel
-        String correo = viewModel.getEmail();
-        String dni = viewModel.getDni();
-        emailTextView.setText(correo);
-        dniTextView.setText(dni);
 
 
         return view;
     }
+
 
 }
 

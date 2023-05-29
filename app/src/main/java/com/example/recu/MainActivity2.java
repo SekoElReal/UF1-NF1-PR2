@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
         private FragmentManager fragmentManager;
-
+        private MyViewModel viewModel;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
@@ -20,10 +20,11 @@ public class MainActivity2 extends AppCompatActivity {
 
                 TextView textNombre = findViewById(R.id.TV_PrintNombre);
                 TextView textNombre2 = findViewById(R.id.TV_PrintApellidos);
-
+                viewModel = new ViewModelProvider(this).get(MyViewModel.class);
                 fragmentManager = getSupportFragmentManager();
 
-                Fragment2 fragment2 = Fragment2.newInstance();
+                Fragment2 fragment2 = Fragment2.newInstance(viewModel);
+
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, fragment2)
                         .commit();
@@ -32,9 +33,6 @@ public class MainActivity2 extends AppCompatActivity {
                 String textoRecibido = intent.getStringExtra("texto");
                 String textoRecibido2 = intent.getStringExtra("texto2");
 
-                // Agregar mensajes de registro en el Logcat
-                Log.d("MainActivity2", "Received Texto: " + textoRecibido);
-                Log.d("MainActivity2", "Received Texto2: " + textoRecibido2);
 
                 boolean b = textoRecibido2 != null;
                 if (textoRecibido != null) {
